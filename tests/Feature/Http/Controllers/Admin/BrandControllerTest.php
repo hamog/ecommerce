@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Spatie\Permission\Models\Permission;

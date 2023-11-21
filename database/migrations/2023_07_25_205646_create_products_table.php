@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('sell_out_of_stock')->default(false);
             $table->text('description')->nullable();
             $table->string('status');
-            $table->foreignId('category_id')->constrained()->nullOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
