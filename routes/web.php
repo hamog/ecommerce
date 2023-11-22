@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
-    Route::resource('roles', RoleController::class);
     Route::post(
         '/user/{user}/roles',
         UserRoleController::class)
@@ -55,7 +54,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
         '/roles/{role}/permissions',
         RolePermissionController::class,
     )->name('roles.permissions.assign');
-
+    Route::resource('roles', RoleController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
 });
