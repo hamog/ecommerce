@@ -40,13 +40,6 @@
                     <i class="fas fa-hashtag"></i> <span>Brands</span>
                 </a>
             </li>
-            <li class="nav-item @if (Route::is('admin.products.*')) active @endif">
-                <a href="{{ route('admin.products.index') }}"
-                   class="nav-link">
-                    <i class="fas fa-shopping-basket"></i> <span>Products</span>
-                </a>
-            </li>
-
         </ul>
     </aside>
 </div>

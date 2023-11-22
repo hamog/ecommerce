@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @content('title')
-Users
+    Users
 @endcontent
 
 @section('content')
