@@ -7,7 +7,6 @@ export default class extends Controller {
     static values = {
         success: String,
         error: String,
-        warning: String,
     };
 
     connect() {
@@ -23,14 +22,6 @@ export default class extends Controller {
             iziToast.error({
                 title: 'Error',
                 message: this.errorValue,
-                position: 'topRight',
-            });
-        }
-
-        if (this.warningValue) {
-            iziToast.error({
-                title: 'Warning',
-                message: this.warningValue,
                 position: 'topRight',
             });
         }

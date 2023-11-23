@@ -30,7 +30,7 @@
         "filepond-plugin-image-validate-size": "^1.2.7",
         "izitoast": "^1.4.0",
         "sass": "^1.69.5",
-        "stimulus-use": "^0.52.0",
+        "stimulus-use": "^0.52.1",
         "sweetalert2": "^11.6.13"
     }
 }
