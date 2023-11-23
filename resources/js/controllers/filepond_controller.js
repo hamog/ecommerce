@@ -67,7 +67,24 @@ export default class extends Controller {
             submitter.removeAttribute('disabled');
         });
 
+        pond.on('processfilestart', () => {
+            submitter.setAttribute('disabled', true);
+        });
 
+        pond.on('addfilestart', () => {
+            submitter.setAttribute('disabled', true);
+        });
 
+        pond.on('addfile', () => {
+            submitter.removeAttribute('disabled');
+        });
+
+        pond.on('processfilerevert', () => {
+            submitter.removeAttribute('disabled');
+        });
+
+        pond.on('processfileabort', () => {
+            submitter.removeAttribute('disabled');
+        });
     }
 }
