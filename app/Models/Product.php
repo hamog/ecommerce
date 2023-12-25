@@ -29,11 +29,11 @@ class Product extends Model
             ->saveSlugsTo('slug');
     }
 
-    /*
- * Get the indexable data array for the model.
- *
- * @return array
- */
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
     public function toSearchableArray(): array
     {
         return [

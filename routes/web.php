@@ -69,7 +69,6 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
     Route::delete('/images', [ImageController::class, 'destroy'])->name(
         'images.destroy',
     );
-
 });
 
 

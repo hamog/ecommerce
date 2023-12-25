@@ -58,14 +58,6 @@ export default class extends Controller {
             },
         });
 
-        pond.on('processfile', (error, event) => {
-            const template = this.templateTarget.innerHTML
-                .replace('NAME', 'images[]')
-                .replace('VALUE', event.serverId);
-
-            this.element.insertAdjacentHTML('beforeend', template);
-            submitter.removeAttribute('disabled');
-        });
 
         pond.on('processfilestart', () => {
             submitter.setAttribute('disabled', true);
@@ -86,5 +78,6 @@ export default class extends Controller {
         pond.on('processfileabort', () => {
             submitter.removeAttribute('disabled');
         });
+
     }
 }

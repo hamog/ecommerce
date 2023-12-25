@@ -1,1 +1,1 @@
-import './turbo';import '../controllers'
+import './turbo';

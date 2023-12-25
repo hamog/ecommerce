@@ -67,6 +67,7 @@
                                                   cols="80"
           {{ stimulus_controller('ckeditor') }}>{{ old('description') }}</textarea>
 
+
                                     </div>
 
                                 </form>
