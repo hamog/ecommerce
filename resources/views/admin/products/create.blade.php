@@ -194,6 +194,7 @@
 
                                 </div>
 
+
                             </div>
                         </div>
 
@@ -319,9 +320,9 @@ is-invalid
                                     </div>
                                     @enderror
                                 </div>
-
                             </div>
                         </div>
+                    </div>
 
                         <div class="card rounded-lg">
                             <div class="card-header">

@@ -56,6 +56,116 @@ export default class extends Controller {
                     },
                 },
             },
+
+            revert: (uniqueFileId, load, error) => {
+                axios
+                    .delete(`${this.revertValue}?media=${uniqueFileId}`)
+                    .then((response) => {
+                        this.uploadTargets.forEach((el) => {
+                            if (el.value == uniqueFileId) {
+                                el.remove();
+                            }
+                        });
+
+                        load();
+                    })
+                    .catch((err) => {
+                        error({
+                            type: 'error',
+                            body: err.message,
+                            code: err.response?.status,
+                        });
+                    });
+            },
+
+            restore: (
+                uniqueFileId,
+                load,
+                error,
+                progress,
+                abort,
+                headers
+            ) => {
+                axios
+                    .get(`${this.restoreValue}?path=${uniqueFileId}`, {
+                        onDownloadProgress: (event) => {
+                            progress(true, event.loaded, event.total);
+                        },
+                        responseType: "blob",
+                    })
+                    .then((response) => {
+                        headers(response.request.getAllResponseHeaders());
+
+                        load(response.data);
+                    })
+                    .catch((err) => error(err.message));
+
+                // Should expose an abort method so the request can be cancelled
+                return {
+                    abort: () => {
+                        // User tapped abort, cancel our ongoing actions here
+
+                        // Let FilePond know the request has been cancelled
+                        abort();
+                    },
+                };
+            },
+
+            remove: (source, load, error) => {
+                axios
+                    .delete(`${this.revertValue}?media=${source}`)
+                    .then((response) => {
+                        load();
+                    })
+                    .catch((err) => {
+                        error({
+                            type: 'error',
+                            body: err.message,
+                            code: err.response?.status,
+                        });
+                    });
+            },
+
+            load: (source, load, error, progress, abort, headers) => {
+                axios
+                    .get(source, {
+                        onDownloadProgress: (event) => {
+                            progress(true, event.loaded, event.total);
+                        },
+                        responseType: 'blob',
+                    })
+                    .then((response) => {
+                        headers(response.request.getAllResponseHeaders());
+
+                        load(response.data);
+                    })
+                    .catch((err) => {
+                        if (err.response) {
+                            return error({
+                                type: 'error',
+                                body: err.response.statusText,
+                                code: err.response.status,
+                            });
+                        }
+
+                        return error({
+                            type: 'error',
+                            body: err.message,
+                            code: 400,
+                        });
+                    });
+
+                return {
+                    abort: () => {
+                        // User tapped cancel, abort our ongoing actions here
+
+                        // Let FilePond know the request has been cancelled
+                        abort();
+                    },
+                };
+            },
+
+
         });
 
 
