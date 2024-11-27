@@ -34,7 +34,7 @@ class MakeAdminTest extends TestCase
             ->expectsOutput(
                 'User admin@example.com now has full access to your site.',
             )
-            ->assertExitCode(0);
+            ->assertExitCode(1);
 
         $this->assertDatabaseHas('users', [
             'email' => 'admin@example.com',

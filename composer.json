@@ -11,6 +11,7 @@
         "flixtechs-labs/stimulus-extra": "^0.0.3",
         "guzzlehttp/guzzle": "^7.2",
         "hotwired-laravel/stimulus-laravel": "^0.3.1",
+        "hotwired-laravel/turbo-laravel": "^2.1",
         "hotwired/turbo-laravel": "^1.12",
         "laravel/fortify": "*",
         "laravel/framework": "^10.10",
