@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Admin;
 
-use Cloudinary\Asset\Image;
+use App\Services\Image;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Mockery;
@@ -15,12 +15,12 @@ class ImageControllerTest extends TestCase
 
     public function test_image_can_be_mocked(): void
     {
-//        $this->instance(
-//            Image::class,
-//            Mockery::mock(Image::class, function (MockInterface $mock) {
-//                $mock->shouldReceive('make')->once();
-//            })
-//        );
-        $this->assertTrue(true);
+        $mock = $this->instance(
+            Image::class,
+            Mockery::mock(Image::class, function (MockInterface $mock) {
+                $mock->shouldReceive('make');
+            })
+        );
+        $this->assertTrue($mock instanceof Image);
     }
 }
