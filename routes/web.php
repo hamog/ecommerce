@@ -28,6 +28,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/resource', function () {
+//    return response()->json([
+//        'success' => true,
+//        'data' => new \App\Http\Resources\UserResource(\App\Models\User::query()->findOrFail(1))
+//    ]);
+
+//    return response()->json([
+//        'success' => true,
+//        'data' => \App\Http\Resources\UserResource::collection(\App\Models\User::all())
+//    ]);
+
+    return new \App\Http\Resources\UserCollection(App\Models\User::paginate(3));
+});
+
 Route::prefix('admin')
     ->middleware(['auth', 'permission:view admin dashboard'])
     ->name('admin.')
